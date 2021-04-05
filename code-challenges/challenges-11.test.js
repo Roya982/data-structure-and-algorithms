@@ -13,9 +13,10 @@ You can assume that neither firstName nor lastName will be blank
 ------------------------------------------------------------------------------------------------ */
 const toLastNames = people => {
   // Solution code here...
-  return people.map(element => {
-    return Object.values(element).join(' ');
+  const array= people.map(element => {
+    return element.firstName + ' ' + element.lastName;
   });
+  return array;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -75,7 +76,7 @@ Note: if you ever need to validate an email using a regex in practice, the Inter
 
 const validateEmail = (email) => {
   // Solution code here...
-  return /^[\w-\.]+@([\w-]+\.)+[\w-]{3}$/.test(email);
+  return /^[A-Za-z0-9]+(\.[A-Za-z0-9]+)?@[A-Za-z0-9]*\.(net|com|org)$/.test(email);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -101,7 +102,7 @@ Return either true or false.
 
 const validatePhoneNumber = (phoneNumber) => {
   // Solution code here...
-  return /^(\+\d{1,2}\s?)?1?\-?\.?\s?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/.test(phoneNumber);
+  return /^([(][0-9]{3}[)]|[0-9]{3}?)[-\s]?[0-9]{3}?[-\s]?[0-9]{4}$/.test(phoneNumber);
 };
 
 /* ------------------------------------------------------------------------------------------------
