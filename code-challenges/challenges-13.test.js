@@ -8,15 +8,15 @@ Write a function named longestString that takes in an array of strings and retur
 
 const longestString = (arr) => {
 // Solution code here...
-  if(!arr.length){
-    return -1
-  }else{
+  if(arr.length !== 0){
     const index= arr.indexOf( arr.reduce(
       function (a, b) {
           return a.length > b.length ? a : b;
       }
     ))
     return index;
+  }else{
+    return -1
   }
 };
   
@@ -30,10 +30,11 @@ For example, ['this is great :)', 'wow', 'whyyyyyy :(', ':)))))'] returns ['t', 
 
 const firstLetters = (arr) => {
   // Solution code here...
-  const first = arr.map(element=>{
-    return element.substring(0,1);
-  });
-  return first;
+  let newArr = [];
+  for(let i=0; i<arr.length; i++){
+    newArr.push(arr[i][0]);
+  }
+  return newArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -46,9 +47,13 @@ For example, ['this is great :)', 'wow', 'whyyyyyy :(', ':)))))'] returns ['this
 
 const findHappiness = (arr) => {
   // Solution code here...
-  return arr.filter(element=>{
-    return element.includes(':)');
-  });
+  let newArray = [];
+  for(let i = 0; i < arr.length ; i++){
+    if(arr[i].includes(':)')){
+      newArray.push(arr[i]);
+    }
+  }
+  return newArray;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -61,10 +66,14 @@ For example, (123) 456-7890 returns 1234567890
 
 const standardizePhoneNumbers = (arr) => {
   // Solution code here...
-  const regex = /\D/;
-  return arr.map(element=>{
-    return element.split(regex).join('');
+  const newArray = [];
+  arr.forEach(element=>{
+    const one = element.substring(1,4);
+    const two = element.substring(6,9);
+    const three = element.substring(10);
+    newArray.push(one+two+three);
   });
+  return newArray;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -77,9 +86,13 @@ For example, 'abcdefg' returns 'bdf'
 
 const onlyOddChars = (str) => {
   // Solution code here...
-  return str.split('').filter((element, index)=>{
-    return index%2
-  }).join('');
+  const newArray = [];
+  for(let i =0; i<str.length; i++){
+    if(i%2 !== 0){
+      newArray.push(str[i]);
+    }
+  }
+  return newArray.join('');
 };
 
 /* ------------------------------------------------------------------------------------------------
